@@ -24,13 +24,13 @@ def draw_arrow(start, end, color, thickness, pointing=0): #0 from start to end
     dy = end[1]-start[1]
     dx = end[0]-start[0]
 
-    angle = math.atan2(dx, dy) + math.pi/2
+    angle = math.atan2(dy, dx)
 
     arrow_length = 15
     arrow_width = 8
 
     tip = end if pointing == 0 else start
-    angle = angle if pointing else angle + math.pi
+    angle = angle if pointing == 0 else angle + math.pi
 
     left = (
         tip[0] - arrow_length * math.cos(angle) + arrow_width * math.sin(angle),
@@ -61,5 +61,6 @@ while running:
     draw()
 
     clock.tick(60)  # limits FPS to 60
+
 
 pygame.quit()
